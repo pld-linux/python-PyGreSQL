@@ -1,20 +1,23 @@
 
-%define pp_subname PyGreSQL
+%define module PyGreSQL
+%define pver 1.6
 
 Summary:       Python interface to PostgresSQL 
 Summary(pl):   Interfejs pomiêdzy jêzykiem Python a baz± danych PostgresSQL 
 Name:          python-PyGreSQL
 Release:       1
-Version:       2.4
+Version:       3.1pre000703
 Copyright:     See description
 Group:         Applications/Databases/Interfaces
 Group(pl):     Aplikacje/Bazy Danych/Interfejsy
-Source:        PyGreSQL.tgz
+Source:        ftp://ftp.druid.net/pub/distrib/PyGreSQL.tgz
 Source1:       python-Makefile.pre.in
 Source2:       Setup.in.PyGreSQL
 URL:           http://www.druid.net/pygresql
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:     %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:      python >= 1.5
+BuildRequires: python-devel >= 1.5
+BuildRequires: postgresql-devel >= 6.5.3
 
 %description
 This package provides access to PostgresSQL data from Python
@@ -36,7 +39,7 @@ Copyright (c) 1995, Pascal ANDRE (andre@via.ecp.fr)
 Pe³na informacja na temat praw autorskich znajduje siê w dokumentacji.
 
 %prep
-%setup -n PyGreSQL-2.4
+%setup -n PyGreSQL-3.1-pre000703
 cp $RPM_SOURCE_DIR/python-Makefile.pre.in ./Makefile.pre.in
 cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
@@ -46,11 +49,11 @@ cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/%{pp_subname}
-echo %{pp_subname} > $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/%{pp_subname}.pth
-install -m 644 pg.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/%{pp_subname}
-#install -m 644 pgext.py $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/%{pp_subname}
-install -m 755 _pgmodule.so $RPM_BUILD_ROOT%{_libdir}/python1.5/site-packages/%{pp_subname}
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
+echo %{module} > $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}.pth
+install -m 644 pg.py $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
+#install -m 644 pgext.py $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
+install -m 755 _pgmodule.so $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
 
 gzip README README.linux Announce ChangeLog
 tar czf tutorial.tar.gz tutorial
@@ -58,7 +61,7 @@ tar czf tutorial.tar.gz tutorial
 %files
 %defattr(644,root,root,755)
 %doc {README,README.linux,tutorial.tar,Announce,ChangeLog}.gz
-%attr(755,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/_pgmodule.so
-#%attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/pgext.py
-%attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/pg.py
-%attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}.pth
+%attr(755,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/_pgmodule.so
+#%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/pgext.py
+%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/pg.py
+%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}.pth
