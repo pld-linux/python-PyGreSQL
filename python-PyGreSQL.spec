@@ -1,6 +1,6 @@
 
 %define module PyGreSQL
-%define pver 1.6
+%define python_sitepkgsdir %(echo `python -c "import sys; print (sys.prefix + '/lib/python' + sys.version[:3] + '/site-packages/')"`)
 
 Summary:       Python interface to PostgresSQL 
 Summary(pl):   Interfejs pomiêdzy jêzykiem Python a baz± danych PostgresSQL 
@@ -49,11 +49,11 @@ cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
-echo %{module} > $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}.pth
-install -m 644 pg.py $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
-#install -m 644 pgext.py $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
-install -m 755 _pgmodule.so $RPM_BUILD_ROOT%{_libdir}/python%{pver}/site-packages/%{module}
+mkdir -p $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
+echo %{module} > $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}.pth
+install -m 644 pg.py $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
+#install -m 644 pgext.py $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
+install -m 755 _pgmodule.so $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
 
 gzip README README.linux Announce ChangeLog
 tar czf tutorial.tar.gz tutorial
@@ -61,7 +61,7 @@ tar czf tutorial.tar.gz tutorial
 %files
 %defattr(644,root,root,755)
 %doc {README,README.linux,tutorial.tar,Announce,ChangeLog}.gz
-%attr(755,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/_pgmodule.so
-#%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/pgext.py
-%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}/pg.py
-%attr(644,root,root) %{_libdir}/python%{pver}/site-packages/%{module}.pth
+%attr(755,root,root) %{python_sitepkgsdir}/%{module}/_pgmodule.so
+#%attr(644,root,root) %{python_sitepkgsdir}/%{module}/pgext.py
+%attr(644,root,root) %{python_sitepkgsdir}/%{module}/pg.py
+%attr(644,root,root) %{python_sitepkgsdir}/%{module}.pth
