@@ -1,5 +1,5 @@
 
-%define pp_subname pygtk
+%define pp_subname PyGreSQL
 
 Summary:       Python interface to PostgresSQL 
 Summary(pl):   Interfejs pomiêdzy jêzykiem Python a baz± danych PostgresSQL 
@@ -61,3 +61,4 @@ tar czf tutorial.tar.gz tutorial
 %attr(755,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/_pgmodule.so
 #%attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/pgext.py
 %attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}/pg.py
+%attr(644,root,root) %{_libdir}/python1.5/site-packages/%{pp_subname}.pth
