@@ -2,12 +2,11 @@ Summary:	PostgreSQL module for Python
 Summary(pl):	Modu³ PostgreSQL dla Pythona
 Name:		python-PyGreSQL
 Version:	3.4
-%define	pre	pre021201
-Release:	0.%{pre}.1
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
-Source0:	ftp://ftp.pygresql.org/pub/distrib/PyGreSQL-%{version}-%{pre}.tgz
-# Source0-md5:	8448fa076c1c3724706dfa93f24efc51
+Source0:	ftp://ftp.pygresql.org/pub/distrib/PyGreSQL-%{version}.tgz
+# Source0-md5:	235d31d1c4d1323c743d1cdff0866551
 URL:		http://www.pygresql.org/
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
@@ -27,7 +26,7 @@ PostgreSQL. Osadza bibliotekê zapytañ PostgreSQL, aby umo¿liwiæ ³atwe
 korzystanie z potê¿nych mo¿liwo¶ci PostgreSQL-a w skryptach Pythona.
 
 %prep
-%setup -q -n PyGreSQL-%{version}-%{pre}
+%setup -q -n PyGreSQL-%{version}
 
 %build
 ./setup.py build_ext \
@@ -48,7 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Announce ChangeLog README
+%doc Announce ChangeLog
 %{py_sitedir}/*.py[co]
 %attr(755,root,root) %{py_sitedir}/_pg.so
 %{_examplesdir}/%{name}-%{version}
