@@ -1,4 +1,0 @@
-*noconfig*
-_pg pgmodule.c -I/usr/include/pgsql -lpq
-
-
