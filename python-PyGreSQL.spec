@@ -1,16 +1,18 @@
 
 %define module PyGreSQL
 %define python_sitepkgsdir %(echo `python -c "import sys; print (sys.prefix + '/lib/python' + sys.version[:3] + '/site-packages/')"`)
+%define python_compile_opt python -O -c "import compileall; compileall.compile_dir('.')"
+%define python_compile python -c "import compileall; compileall.compile_dir('.')"
 
 Summary:       Python interface to PostgresSQL 
 Summary(pl):   Interfejs pomiêdzy jêzykiem Python a baz± danych PostgresSQL 
 Name:          python-PyGreSQL
 Release:       1
-Version:       3.1pre000703
+Version:       3.1
 Copyright:     See description
 Group:         Applications/Databases/Interfaces
 Group(pl):     Aplikacje/Bazy Danych/Interfejsy
-Source:        ftp://ftp.druid.net/pub/distrib/PyGreSQL.tgz
+Source:        ftp://ftp.druid.net/pub/distrib/%{module}-%{version}.tgz
 Source1:       python-Makefile.pre.in
 Source2:       Setup.in.PyGreSQL
 URL:           http://www.druid.net/pygresql
@@ -39,20 +41,23 @@ Copyright (c) 1995, Pascal ANDRE (andre@via.ecp.fr)
 Pe³na informacja na temat praw autorskich znajduje siê w dokumentacji.
 
 %prep
-%setup -n PyGreSQL-3.1-pre000703
+%setup -n PyGreSQL-3.1
 cp $RPM_SOURCE_DIR/python-Makefile.pre.in ./Makefile.pre.in
 cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
 %build
 %{__make} -f Makefile.pre.in boot
-%{__make}
+%{__make} OPT="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
 echo %{module} > $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}.pth
-install -m 644 pg.py $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
-#install -m 644 pgext.py $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
+
+%python_compile_opt
+%python_compile
+
+install -m 644 pg.py{c,o} $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
 install -m 755 _pgmodule.so $RPM_BUILD_ROOT%{python_sitepkgsdir}/%{module}
 
 gzip README README.linux Announce ChangeLog
@@ -62,6 +67,6 @@ tar czf tutorial.tar.gz tutorial
 %defattr(644,root,root,755)
 %doc {README,README.linux,tutorial.tar,Announce,ChangeLog}.gz
 %attr(755,root,root) %{python_sitepkgsdir}/%{module}/_pgmodule.so
-#%attr(644,root,root) %{python_sitepkgsdir}/%{module}/pgext.py
-%attr(644,root,root) %{python_sitepkgsdir}/%{module}/pg.py
+%attr(644,root,root) %{python_sitepkgsdir}/%{module}/*.pyc
+%attr(644,root,root) %{python_sitepkgsdir}/%{module}/*.pyo
 %attr(644,root,root) %{python_sitepkgsdir}/%{module}.pth
