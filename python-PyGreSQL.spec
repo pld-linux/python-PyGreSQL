@@ -2,7 +2,7 @@ Summary:	PostgreSQL module for Python
 Summary(pl):	Modu³ PostgreSQL dla Pythona
 Name:		python-PyGreSQL
 Version:	3.5
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	ftp://ftp.pygresql.org/pub/distrib/PyGreSQL-%{version}.tgz
