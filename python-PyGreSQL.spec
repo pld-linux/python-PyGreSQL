@@ -13,7 +13,7 @@ Source:        PyGreSQL.tgz
 Source1:       python-Makefile.pre.in
 Source2:       Setup.in.PyGreSQL
 URL:           http://www.druid.net/pygresql
-BuildRoot:     /tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Requires:      python >= 1.5
 
 %description
