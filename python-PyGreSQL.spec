@@ -41,7 +41,7 @@ cp $RPM_SOURCE_DIR/python-Makefile.pre.in ./Makefile.pre.in
 cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
 %build
-make -f Makefile.pre.in boot
+%{__make} -f Makefile.pre.in boot
 make
 
 %install
