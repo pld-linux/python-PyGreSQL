@@ -42,7 +42,7 @@ cp $RPM_SOURCE_DIR/Setup.in.PyGreSQL Setup.in
 
 %build
 %{__make} -f Makefile.pre.in boot
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
