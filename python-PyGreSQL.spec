@@ -6,7 +6,7 @@ Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	ftp://ftp.pygresql.org/pub/distrib/PyGreSQL-%{version}.tgz
-# Source0-md5:	
+# Source0-md5:	9fa4c2fc1dd0b3b93a3381c048443e16
 URL:		http://www.pygresql.org/
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
