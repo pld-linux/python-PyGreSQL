@@ -10,8 +10,7 @@ Source0:	ftp://ftp.pygresql.org/pub/distrib/PyGreSQL-%{version}.tgz
 URL:		http://www.pygresql.org/
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	python-devel
-BuildRequires:	python-devel-src
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
 Obsoletes:	python-postgresql
@@ -52,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc docs/*
-%{py_sitedir}/*.py[co]
 %attr(755,root,root) %{py_sitedir}/_pg.so
+%{py_sitedir}/*.py[co]
+%{py_sitedir}/PyGreSQL-*.egg-info
 %{_examplesdir}/%{name}-%{version}
