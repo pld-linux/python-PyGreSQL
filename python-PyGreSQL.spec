@@ -1,5 +1,5 @@
 Summary:	PostgreSQL module for Python
-Summary(pl):	Modu³ PostgreSQL dla Pythona
+Summary(pl.UTF-8):   ModuÅ‚ PostgreSQL dla Pythona
 Name:		python-PyGreSQL
 Version:	3.8.1
 Release:	1
@@ -21,10 +21,10 @@ PyGreSQL is a Python module that interfaces to a PostgreSQL database.
 It embeds the PostgreSQL query library to allow easy use of the
 powerful PostgreSQL features from a Python script.
 
-%description -l pl
-PyGreSQL to modu³ Pythona bêd±cy interfejsem do bazy danych
-PostgreSQL. Osadza bibliotekê zapytañ PostgreSQL, aby umo¿liwiæ ³atwe
-korzystanie z potê¿nych mo¿liwo¶ci PostgreSQL-a w skryptach Pythona.
+%description -l pl.UTF-8
+PyGreSQL to moduÅ‚ Pythona bÄ™dÄ…cy interfejsem do bazy danych
+PostgreSQL. Osadza bibliotekÄ™ zapytaÅ„ PostgreSQL, aby umoÅ¼liwiÄ‡ Å‚atwe
+korzystanie z potÄ™Å¼nych moÅ¼liwoÅ›ci PostgreSQL-a w skryptach Pythona.
 
 %prep
 %setup -q -n PyGreSQL-%{version}
