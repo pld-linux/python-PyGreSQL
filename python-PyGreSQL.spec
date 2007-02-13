@@ -1,5 +1,5 @@
 Summary:	PostgreSQL module for Python
-Summary(pl.UTF-8):   Moduł PostgreSQL dla Pythona
+Summary(pl.UTF-8):	Moduł PostgreSQL dla Pythona
 Name:		python-PyGreSQL
 Version:	3.8.1
 Release:	1
