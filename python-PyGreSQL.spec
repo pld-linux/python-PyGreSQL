@@ -37,9 +37,7 @@ korzystanie z potężnych możliwości PostgreSQL-a w skryptach Pythona.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-python setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 install tutorial/*.py $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
