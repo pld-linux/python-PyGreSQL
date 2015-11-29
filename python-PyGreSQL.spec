@@ -8,6 +8,7 @@ Group:		Libraries/Python
 Source0:	http://www.pygresql.org/files/PyGreSQL-%{version}.tgz
 # Source0-md5:	71d0b8c5a382f635572eb52fee47cd08
 URL:		http://www.pygresql.org/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	python-devel >= 1:2.6
